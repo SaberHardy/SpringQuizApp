@@ -18,7 +18,7 @@ public class QuizAttempts {
 
     @ManyToOne
     @JoinColumn
-    private User user;
+    private AppUser user;
 
     @ManyToOne
     @JoinColumn(name = "quiz_id")

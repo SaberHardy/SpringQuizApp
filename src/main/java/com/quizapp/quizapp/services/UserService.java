@@ -1,7 +1,7 @@
 package com.quizapp.quizapp.services;
 
 import com.quizapp.quizapp.models.QuizAttempts;
-import com.quizapp.quizapp.models.User;
+import com.quizapp.quizapp.models.AppUser;
 import com.quizapp.quizapp.repositories.QuizAttemptsRepository;
 import com.quizapp.quizapp.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,15 +14,15 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-    public List<User> getAllQuizAttempts() {
+    public List<AppUser> getAllQuizAttempts() {
         return userRepository.findAll();
     }
 
-    public User getQuizAttemptsById(Long id) {
-        return userRepository.findById(id).orElse(new User());
+    public AppUser getQuizAttemptsById(Long id) {
+        return userRepository.findById(id).orElse(new AppUser());
     }
 
-    public User saveQuizAttempts(User user) {
+    public AppUser saveQuizAttempts(AppUser user) {
         return userRepository.save(user);
     }
 
