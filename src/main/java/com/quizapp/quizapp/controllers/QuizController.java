@@ -7,25 +7,27 @@ import com.quizapp.quizapp.services.QuizService;
 import com.quizapp.quizapp.models.Quiz;
 import org.springframework.ui.Model;
 
+import java.sql.SQLOutput;
+
 @Controller
-@RequestMapping("/quizzes")
+@RequestMapping("quizzes")
 public class QuizController {
     @Autowired
     private QuizService quizService;
 
     @GetMapping
-    public String listQuizzes(Model model) {
+    public String getAllQuizzes(Model model) {
         model.addAttribute("quizzes", quizService.getAllQuizzes());
         return "quizzes";
     }
 
-    @GetMapping("/new")
+    @GetMapping("/add")
     public String showAddQuizForm(Model model) {
         model.addAttribute("quiz", new Quiz());
         return "add-quiz";
     }
 
-    @PostMapping
+    @PostMapping("/add")
     public String addQuiz(@ModelAttribute Quiz quiz) {
         quizService.saveQuiz(quiz);
         return "redirect:/quizzes";
