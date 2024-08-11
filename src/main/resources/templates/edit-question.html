@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edit Question</title>
+</head>
+<body>
+<h1>Edit Question</h1>
+<form action="#" th:action="@{/quiz/{quizId}/questions/update/{questionId}(quizId=${quiz.id}, questionId=${question.id})}" method="post">
+    <label for="text">Question Text:</label>
+    <input type="text" id="text" name="text" th:value="${question.text}" required/>
+
+    <label for="option1">Option 1:</label>
+    <input type="text" id="option1" name="option1" th:value="${question.options[0].text}" required/>
+
+    <label for="option2">Option 2:</label>
+    <input type="text" id="option2" name="option2" th:value="${question.options[1].text}" required/>
+
+    <label for="option3">Option 3:</label>
+    <input type="text" id="option3" name="option3" th:value="${question.options[2].text}" required/>
+
+    <label for="option4">Option 4:</label>
+    <input type="text" id="option4" name="option4" th:value="${question.options[3].text}" required/>
+
+    <label for="correctOption">Correct Option:</label>
+    <select id="correctOption" name="correctOption" required>
+        <option th:value="1" th:selected="${question.correctOption == 1}">Option 1</option>
+        <option th:value="2" th:selected="${question.correctOption == 2}">Option 2</option>
+        <option th:value="3" th:selected="${question.correctOption == 3}">Option 3</option>
+        <option th:value="4" th:selected="${question.correctOption == 4}">Option 4</option>
+    </select>
+
+    <button type="submit">Update Question</button>
+</form>
+<a th:href="@{/quiz/{quizId}/questions(quizId=${quiz.id})}">Back to Questions</a>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" href="styles.css">
+<head>
+    <title>All Quizzes</title>
+</head>
+<body>
+<h1>All Quizzes</h1>
+<a th:href="@{/quizzes/add}">Add New Quiz</a>
+<table>
+    <thead>
+    <tr>
+        <th>Title</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="quiz : ${quizzes}">
+        <td th:text="${quiz.title}"></td>
+        <td>
+            <a th:href="@{/quizzes/edit/{id}(id=${quiz.id})}">Edit</a>
+            <form th:action="@{/quizzes/delete/{id}(id=${quiz.id})}" method="post" style="display:inline;">
+                <button type="submit">Delete</button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
